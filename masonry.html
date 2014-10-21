@@ -1,0 +1,24 @@
+<div class="col-md-9 col-md-offset-2" ng-controller="MasonryController">
+	<button type="button" class="btn btn-primary" ladda="busy" ng-click="loadMore()">Load more</button>
+	<div class="col-md-3">
+		<div angucomplete id="ex1" placeholder="Auto complete..." pause="500" 
+		selectedobject="searchItem" localdata="items" searchfields="name" titlefield="name" minlength="1" inputclass="form-control"  descriptionfield="age" imagefield="picture" > 
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div angucomplete id="ex1" placeholder="Auto complete..." pause="500" 
+		selectedobject="searchItem" localdata="items" searchfields="name" titlefield="name" minlength="1" inputclass="form-control" on-callback="callbackFunc_2()" descriptionfield="age" imagefield="picture" > 
+		</div>
+	</div>
+	
+	<div class="col-md-12">
+		<div masonry infinite-scroll="loadMore()" infinite-scroll-disabled="busy">
+			<div class="masonry-brick" ng-repeat="item in items | limitTo: numlimit">
+				<img ng-src="{{item.picture }}">
+				<div >{{item.name}}</div>
+				<div >{{item.age}}</div>
+			</div>
+		</div>
+	</div>
+
+</div>

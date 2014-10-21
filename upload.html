@@ -1,0 +1,26 @@
+<div class="col-md-9 col-md-offset-2" ng-controller="UploadController">
+	<div class="col-md-2">
+		<button type="button" class="btn btn-primary" ladda="busy" ng-click="loadMore()" ng-file-select="onFileSelect($files)" data-multiple="true" title="select file" onclick="this.value = null">Select file</button>
+	</div>
+	<div class="col-md-2">
+		<button type="button" class="btn btn-primary" ladda="uploadStatus" ng-show="selectedFiles.length" ng-click="uploadPhotos()">Upload</button>
+	</div>
+	<div class="col-md-8">
+		<div class="drop-box" ng-file-drop="onFileSelect($files)" >or drop files here</div>
+	</div>
+	
+	<div class="col-md-12">
+		<div masonry >
+			<div class="masonry-brick" ng-repeat="f in selectedFiles">
+				<a href="javascript:void(0)" ng-click="removeItem($index)"><span class="glyphicon glyphicon-remove delete-image"></span></a>
+				<img ng-src="{{dataUrls[$index]}}" style="width:200px; height: 200px;">
+				<div class="progress" ng-show="progress[$index]>0">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="{{progress[$index]}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progress[$index]}}%;">
+					{{progress[$index]}}%
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
